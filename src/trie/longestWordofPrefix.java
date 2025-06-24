@@ -46,6 +46,8 @@ public class longestWordofPrefix {
 
     public static void main(String[] args) {
         String words[]={"a","ap","app","appl","apple","apply","banana"};
+
+
         for (int i=0; i<words.length;i++){
             insert(words[i]);
         }
