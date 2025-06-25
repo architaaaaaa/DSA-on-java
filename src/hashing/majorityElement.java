@@ -26,7 +26,7 @@ public class majorityElement {
     }
 
     public static void main(String[] args) {
-        int nums[]={1,3,2,5,1,3,1,5,1};
+        int nums []={1,3,2,5,1,3,1,5,1};
         printElement(nums);
 
     }

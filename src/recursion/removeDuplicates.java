@@ -9,6 +9,7 @@ public class removeDuplicates {
             return;
         }
         char currChar= str.charAt(index);
+
         if(map[currChar-'a']){
             printDuplicates(str, index+1, newString);
         }else{
