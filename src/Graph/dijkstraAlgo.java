@@ -48,7 +48,7 @@ public class dijkstraAlgo {
         }
     }
 
-    public static void dijkstraAlgo(ArrayList<Edge> graph[], int src, int V){
+    public static void dijkstraAlgorithm(ArrayList<Edge> graph[], int src, int V){
         PriorityQueue<Pair> pq= new PriorityQueue<>();
 
         int dist[]= new int[V];
@@ -57,7 +57,6 @@ public class dijkstraAlgo {
                 dist[i]= Integer.MAX_VALUE;
             }
         }
-
         boolean vis[]=  new boolean[V];
         pq.add(new Pair(0,0));
 
@@ -91,7 +90,7 @@ public class dijkstraAlgo {
         ArrayList<Edge> graph[] = new ArrayList[V];
         create(graph);
 
-        dijkstraAlgo(graph,0,V);
+        dijkstraAlgorithm(graph,0,V);
 
     }
 }
