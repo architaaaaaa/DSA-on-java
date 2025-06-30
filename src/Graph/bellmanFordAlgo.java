@@ -25,7 +25,7 @@ public class bellmanFordAlgo {
 
         graph[3].add(new Edge(3,4,4));
 
-        graph[4].add(new Edge(4,1,-1));
+        graph[4].add(new Edge(4,1,-10));
     }
 //    public static void bellMan(ArrayList<Edge> graph[], int src, int V){
 //        int dist[]= new int[V];
@@ -62,25 +62,33 @@ public static ArrayList<Integer> bellmanFord(ArrayList<Edge> graph[], int src, i
 
     // Initialize distances
     for (int i = 0; i < V; i++) {
-        // distances.add(i==src ? 0: Integer.MAX_VALUE);
-        if(i==src){
-            distances.add(i);
-        }else{
-            distances.add(Integer.MAX_VALUE);
-        }
+        distances.add(i == src ? 0 : Integer.MAX_VALUE);
     }
 
     // Relax all edges V-1 times
     for (int i = 0; i < V - 1; i++) {
-        for (int j = 0; j < graph[i].size(); j++) {
-            Edge e= graph[i].get(j);
-            int u=e.src;
-            int v=e.dest;
-            if(distances.get(u)!= Integer.MAX_VALUE && distances.get(u)+ e.wt<distances.get(v)){
-                distances.set(v, distances.get(u)+e.wt);
+        for (int u = 0; u < V; u++) {
+            for (Edge e : graph[u]) {
+                int v = e.dest;
+                if (distances.get(u) != Integer.MAX_VALUE &&
+                        distances.get(u) + e.wt < distances.get(v)) {
+                    distances.set(v, distances.get(u) + e.wt);
+                }
             }
         }
     }
+
+    // Check for negative-weight cycles
+    for (int u = 0; u < V; u++) {
+        for (Edge e : graph[u]) {
+            int v = e.dest;
+            if (distances.get(u) != Integer.MAX_VALUE &&
+                    distances.get(u) + e.wt < distances.get(v)) {
+                System.out.println("Negative weight cycle detected!");
+            }
+        }
+    }
+
     return distances;
 }
 
